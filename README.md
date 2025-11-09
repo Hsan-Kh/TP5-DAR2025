@@ -206,7 +206,7 @@ ctx.rebind("BK", rootPOA.servant_to_reference(banqueImpl));
 
 ### 🌟 Innovation 2 : Gestion avancée des erreurs
 
-**Code serveur avec messages détaillés :**
+**Code service avec messages détaillés :**
 ```java
 if (c.solde >= mt) {
     c.solde -= mt;
@@ -214,7 +214,6 @@ if (c.solde >= mt) {
     System.out.println("   Nouveau solde: " + c.solde);
 } else {
     System.out.println(" ERREUR : Solde insuffisant pour le compte " + code);
-    System.out.println("   Solde actuel: " + c.solde + ", Montant demandé: " + mt);
 }
 ```
 
