@@ -130,26 +130,29 @@ tnameserv -help
 
 ```bash
 git clone https://github.com/Hsan-Kh/TP5-DAR2025
+cd TP5-DAR2025
 cd KhecharemHsan_LSI3_DevAppReparties_TP5
 ```
 
 ### Étape 2 : Compiler l'IDL
 
 **Pour le serveur :**
+**(A faire si vous n'avez pas le package corbaBanque)**
 ```bash
 cd TP5_CorbaBanque_Server/src
 idlj -fall -v Banque.idl
 ```
 
 **Pour le client :**
+**(A faire si vous n'avez pas le package corbaBanque)**
 ```bash
 cd TP5_CorbaBanque_Client/src
-idlj -fall -v Banque.idl
+idlj -fall -v Banque.idl 
 ```
 
 
 
-### Étape 4 : Lancer l'application
+### Étape 3 : Lancer l'application
 
 **⚠️ Ordre d'exécution OBLIGATOIRE :**
 
@@ -451,7 +454,7 @@ TP5-CORBA-Banque/
 **Hsan Khecharem**
 - 🎓 LSI3 - Développement d'applications réparties
 - 📧 Email: khecharemhsan@gmail.com
-- 🔗 GitHub: [@votre-username](https://github.com/votre-username)
+- 🔗 GitHub: https://github.com/Hsan-Kh
 
 ### Ressources
 
