@@ -130,7 +130,7 @@ tnameserv -help
 
 ```bash
 git clone https://github.com/Hsan-Kh/TP5-DAR2025
-cd TP5-CORBA-Banque
+cd KhecharemHsan_LSI3_DevAppReparties_TP5
 ```
 
 ### Étape 2 : Compiler l'IDL
@@ -147,15 +147,7 @@ cd TP5_CorbaBanque_Client/src
 idlj -fall -v Banque.idl
 ```
 
-### Étape 3 : Compiler les classes Java
 
-**Avec IntelliJ/Eclipse :**
-- Build → Build Project
-
-**Ou en ligne de commande :**
-```bash
-javac -d bin src/**/*.java
-```
 
 ### Étape 4 : Lancer l'application
 
@@ -163,7 +155,7 @@ javac -d bin src/**/*.java
 
 #### 1️⃣ Démarrer le service de nommage
 ```bash
-tnameserv -ORBInitialPort 900
+tnameserv 
 ```
 > 💡 Laissez cette fenêtre ouverte pendant toute la session
 
@@ -215,10 +207,10 @@ ctx.rebind("BK", rootPOA.servant_to_reference(banqueImpl));
 ```java
 if (c.solde >= mt) {
     c.solde -= mt;
-    System.out.println("✅ Retrait de " + mt + " du compte " + code);
+    System.out.println(" Retrait de " + mt + " du compte " + code);
     System.out.println("   Nouveau solde: " + c.solde);
 } else {
-    System.out.println("❌ ERREUR : Solde insuffisant pour le compte " + code);
+    System.out.println(" ERREUR : Solde insuffisant pour le compte " + code);
     System.out.println("   Solde actuel: " + c.solde + ", Montant demandé: " + mt);
 }
 ```
@@ -456,9 +448,9 @@ TP5-CORBA-Banque/
 
 ### Auteur
 
-**[Votre Nom Prénom]**
+**Hsan Khecharem**
 - 🎓 LSI3 - Développement d'applications réparties
-- 📧 Email: votre.email@domaine.tn
+- 📧 Email: khecharemhsan@gmail.com
 - 🔗 GitHub: [@votre-username](https://github.com/votre-username)
 
 ### Ressources
