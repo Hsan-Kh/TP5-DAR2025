@@ -130,7 +130,6 @@ tnameserv -help
 
 ```bash
 git clone https://github.com/Hsan-Kh/TP5-DAR2025
-cd TP5-DAR2025
 cd KhecharemHsan_LSI3_DevAppReparties_TP5
 ```
 
