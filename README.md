@@ -159,7 +159,7 @@ idlj -fall -v Banque.idl
 ```bash
 tnameserv 
 ```
-> 💡 Laissez cette fenêtre ouverte pendant toute la session
+>  Laissez cette fenêtre ouverte pendant toute la session
 
 #### 2️ Démarrer le serveur
 ```bash
