@@ -1,4 +1,4 @@
-# 🏦 Service Bancaire Distribué avec CORBA
+#  Service Bancaire Distribué avec CORBA
 
 [![Java](https://img.shields.io/badge/Java-1.8-orange.svg)](https://www.oracle.com/java/)
 [![CORBA](https://img.shields.io/badge/Middleware-CORBA-blue.svg)](https://www.omg.org/corba/)
@@ -9,36 +9,36 @@
 
 ---
 
-## 📋 Table des matières
+##  Table des matières
 
-- [🎯 Vue d'ensemble](#-vue-densemble)
-- [✨ Fonctionnalités](#-fonctionnalités)
-- [🏗️ Architecture](#️-architecture)
-- [🔧 Technologies](#-technologies)
-- [🚀 Installation et Exécution](#-installation-et-exécution)
-- [💡 Particularités d'implémentation](#-particularités-dimplémentation)
-- [📊 Tests et Résultats](#-tests-et-résultats)
-- [🎓 Concepts CORBA illustrés](#-concepts-corba-illustrés)
-- [📝 Structure du projet](#-structure-du-projet)
-- [⚠️ Prérequis et Limitations](#️-prérequis-et-limitations)
-- [🤝 Contribution](#-contribution)
+- [ Vue d'ensemble](#-vue-densemble)
+- [ Fonctionnalités](#-fonctionnalités)
+- [ Architecture](#️-architecture)
+- [ Technologies](#-technologies)
+- [ Installation et Exécution](#-installation-et-exécution)
+- [ Particularités d'implémentation](#-particularités-dimplémentation)
+- [ Tests et Résultats](#-tests-et-résultats)
+- [ Concepts CORBA illustrés](#-concepts-corba-illustrés)
+- [ Structure du projet](#-structure-du-projet)
+- [ Prérequis et Limitations](#️-prérequis-et-limitations)
+- [ Contribution](#-contribution)
 
 ---
 
-## 🎯 Vue d'ensemble
+##  Vue d'ensemble
 
 Cette application démontre l'utilisation du middleware CORBA pour créer un service bancaire distribué permettant à plusieurs clients de gérer des comptes à distance. Le système utilise **JNDI (Java Naming and Directory Interface)** comme service d'annuaire, offrant une alternative élégante au Naming Service CORBA traditionnel.
 
 ### Cas d'usage
 
-- 💰 **Gestion de comptes** : Création, consultation et modification
-- 💸 **Opérations bancaires** : Versements et retraits avec validation
-- 🌍 **Conversion de devises** : Euro (€) vers Dinar Tunisien (DT)
-- 🔍 **Consultation globale** : Vue d'ensemble de tous les comptes
+-  **Gestion de comptes** : Création, consultation et modification
+-  **Opérations bancaires** : Versements et retraits avec validation
+-  **Conversion de devises** : Euro (€) vers Dinar Tunisien (DT)
+-  **Consultation globale** : Vue d'ensemble de tous les comptes
 
 ---
 
-## ✨ Fonctionnalités
+##  Fonctionnalités
 
 ### Opérations disponibles
 
@@ -53,14 +53,14 @@ Cette application démontre l'utilisation du middleware CORBA pour créer un ser
 
 ### Validations métier
 
-- ✅ Unicité des codes de compte
-- ✅ Vérification du solde avant retrait
-- ✅ Messages d'erreur explicites
-- ✅ Traçabilité des opérations (logs serveur)
+-  Unicité des codes de compte
+-  Vérification du solde avant retrait
+-  Messages d'erreur explicites
+-  Traçabilité des opérations (logs serveur)
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -109,7 +109,7 @@ Cette application démontre l'utilisation du middleware CORBA pour créer un ser
 
 ---
 
-## 🚀 Installation et Exécution
+##  Installation et Exécution
 
 ### Prérequis
 
@@ -153,37 +153,37 @@ idlj -fall -v Banque.idl
 
 ### Étape 3 : Lancer l'application
 
-**⚠️ Ordre d'exécution OBLIGATOIRE :**
+** Ordre d'exécution OBLIGATOIRE :**
 
-#### 1️⃣ Démarrer le service de nommage
+#### 1️ Démarrer le service de nommage
 ```bash
 tnameserv 
 ```
 > 💡 Laissez cette fenêtre ouverte pendant toute la session
 
-#### 2️⃣ Démarrer le serveur
+#### 2️ Démarrer le serveur
 ```bash
 cd TP5_CorbaBanque_Server
 java -cp bin corbaServer.BanqueServer
 ```
-> ✅ Attendez le message : "Serveur Banque prêt et en attente de requêtes..."
+>  Attendez le message : "Serveur Banque prêt et en attente de requêtes..."
 
-#### 3️⃣ Lancer le client
+#### 3️ Lancer le client
 ```bash
 cd TP5_CorbaBanque_Client
 java -cp bin corbaClient.BanqueClient
 ```
-> 🎉 Les tests s'exécutent automatiquement !
+>  Les tests s'exécutent automatiquement !
 
 ---
 
-## 💡 Particularités d'implémentation
+##  Particularités d'implémentation
 
-### 🌟 Innovation 1 : JNDI au lieu du Naming Service CORBA
+###  Innovation 1 : JNDI au lieu du Naming Service CORBA
 
 **Approche traditionnelle (CosNaming) :**
 ```java
-// ❌ Approche standard CORBA
+//  Approche standard CORBA
 org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
 NamingContextExt nameContext = NamingContextExtHelper.narrow(objRef);
 NameComponent[] path = nameContext.to_name("BanqueService");
@@ -192,18 +192,18 @@ nameContext.rebind(path, banqueRef);
 
 **Notre approche (JNDI) :**
 ```java
-// ✅ Notre approche simplifiée avec JNDI
+//  Notre approche simplifiée avec JNDI
 Context ctx = new InitialContext();
 ctx.rebind("BK", rootPOA.servant_to_reference(banqueImpl));
 ```
 
 **Avantages :**
-- ✨ **Code plus concis** : 2 lignes au lieu de 4+
-- 🎯 **API Java standard** : Pas de classes CORBA spécifiques
-- 🔄 **Plus flexible** : JNDI peut utiliser différents backends
-- 📚 **Meilleure intégration** : Compatible avec les applications Java EE
+-  **Code plus concis** : 2 lignes au lieu de 4+
+-  **API Java standard** : Pas de classes CORBA spécifiques
+-  **Plus flexible** : JNDI peut utiliser différents backends
+-  **Meilleure intégration** : Compatible avec les applications Java EE
 
-### 🌟 Innovation 2 : Gestion avancée des erreurs
+###  Innovation 2 : Gestion avancée des erreurs
 
 **Code service avec messages détaillés :**
 ```java
@@ -217,11 +217,11 @@ if (c.solde >= mt) {
 ```
 
 **Bénéfices :**
-- 🔍 **Débogage facilité** : Messages clairs côté serveur
-- 📊 **Audit trail** : Traçabilité de toutes les opérations
-- 🛡️ **Validation robuste** : Vérifications avant modification
+-  **Débogage facilité** : Messages clairs côté serveur
+-  **Audit trail** : Traçabilité de toutes les opérations
+-  **Validation robuste** : Vérifications avant modification
 
-### 🌟 Innovation 3 : Architecture modulaire
+###  Innovation 3 : Architecture modulaire
 
 ```
 TP5_CorbaBanque_Server/
@@ -229,33 +229,33 @@ TP5_CorbaBanque_Server/
 │   ├── Banque.idl              # Interface IDL
 │   ├── jndi.properties         # Configuration JNDI
 │   ├── corbaBanque/            # Code généré (stubs/skeletons)
-│   ├── service/                # 🎯 Couche métier
+│   ├── service/                # Couche métier
 │   │   └── BanqueImpl.java     #    Logique bancaire isolée
-│   └── corbaServer/            # 🚀 Couche distribution
+│   └── corbaServer/            #    Couche distribution
 │       └── BanqueServer.java   #    Infrastructure CORBA
 ```
 
 **Séparation des responsabilités :**
-- 💼 **service/** : Logique métier pure (réutilisable)
-- 🌐 **corbaServer/** : Infrastructure CORBA (remplaçable)
-- 🔌 **Couplage faible** : Possibilité de changer le middleware
+-  **service/** : Logique métier pure (réutilisable)
+-  **corbaServer/** : Infrastructure CORBA (remplaçable)
+-  **Couplage faible** : Possibilité de changer le middleware
 
 ---
 
-## 📊 Tests et Résultats
+##  Tests et Résultats
 
 ### Suite de tests automatiques
 
 Le client exécute 7 tests couvrant tous les cas d'usage :
 
 ```
-✅ Test 1 : Création de 3 comptes (codes: 1001, 1002, 1003)
-✅ Test 2 : Consultation d'un compte spécifique
-✅ Test 3 : Versement de 500€ (solde: 1000€ → 1500€)
-✅ Test 4 : Retrait de 300€ (solde: 2500€ → 2200€)
-✅ Test 5 : Tentative de retrait avec solde insuffisant (gestion d'erreur)
-✅ Test 6 : Conversion de devises (100€ → 330 DT)
-✅ Test 7 : Consultation de tous les comptes (liste complète)
+ Test 1 : Création de 3 comptes (codes: 1001, 1002, 1003)
+ Test 2 : Consultation d'un compte spécifique
+ Test 3 : Versement de 500€ (solde: 1000€ → 1500€)
+ Test 4 : Retrait de 300€ (solde: 2500€ → 2200€)
+ Test 5 : Tentative de retrait avec solde insuffisant (gestion d'erreur)
+ Test 6 : Conversion de devises (100€ → 330 DT)
+ Test 7 : Consultation de tous les comptes (liste complète)
 ```
 
 ### Exemple de sortie console
@@ -287,7 +287,7 @@ Compte 1001 - Solde: 1000.0€
 
 ---
 
-## 🎓 Concepts CORBA illustrés
+##  Concepts CORBA illustrés
 
 ### 1. IDL (Interface Definition Language)
 
@@ -366,7 +366,7 @@ IBanqueRemote stub = IBanqueRemoteHelper.narrow((org.omg.CORBA.Object)ref);
 
 ---
 
-## 📝 Structure du projet
+##  Structure du projet
 
 ```
 TP5-CORBA-Banque/
@@ -376,7 +376,7 @@ TP5-CORBA-Banque/
 │   │   ├── Banque.idl                      # Interface IDL
 │   │   ├── jndi.properties                 # Config JNDI (port 900)
 │   │   │
-│   │   ├── corbaBanque/                    # 🤖 Généré par idlj
+│   │   ├── corbaBanque/                    # Généré par idlj
 │   │   │   ├── Compte.java
 │   │   │   ├── CompteHelper.java
 │   │   │   ├── CompteHolder.java
@@ -387,10 +387,10 @@ TP5-CORBA-Banque/
 │   │   │   ├── IBanqueRemotePOA.java       # Skeleton serveur
 │   │   │   └── _IBanqueRemoteStub.java
 │   │   │
-│   │   ├── service/                        # 💼 Logique métier
+│   │   ├── service/                        # Logique métier
 │   │   │   └── BanqueImpl.java             # Implémentation servant
 │   │   │
-│   │   └── corbaServer/                    # 🚀 Infrastructure
+│   │   └── corbaServer/                    # Infrastructure
 │   │       └── BanqueServer.java           # Point d'entrée serveur
 │   │
 │   └── TP5_CorbaBanque_Server.iml
@@ -400,10 +400,10 @@ TP5-CORBA-Banque/
 │   │   ├── Banque.idl                      # Copie du serveur
 │   │   ├── jndi.properties                 # Copie du serveur
 │   │   │
-│   │   ├── corbaBanque/                    # 🤖 Généré par idlj
+│   │   ├── corbaBanque/                    # Généré par idlj
 │   │   │   └── (mêmes fichiers)
 │   │   │
-│   │   └── corbaClient/                    # 💻 Application cliente
+│   │   └── corbaClient/                    # Application cliente
 │   │       └── BanqueClient.java           # Point d'entrée client
 │   │
 │   └── TP5_CorbaBanque_Client.iml
@@ -414,51 +414,51 @@ TP5-CORBA-Banque/
 
 ---
 
-## ⚠️ Prérequis et Limitations
+##  Prérequis et Limitations
 
 ### Prérequis strictes
 
-- ✅ **JDK 1.8 obligatoire** : CORBA retiré après Java 8
-- ✅ **Port 900 disponible** : Nécessaire pour tnameserv
-- ✅ **Ordre d'exécution** : tnameserv → Serveur → Client
+-  **JDK 1.8 obligatoire** : CORBA retiré après Java 8
+-  **Port 900 disponible** : Nécessaire pour tnameserv
+-  **Ordre d'exécution** : tnameserv → Serveur → Client
 
 ### Limitations connues
 
-- ⚠️ **Pas de persistance** : Données en mémoire (perdues au redémarrage)
-- ⚠️ **Mono-serveur** : Un seul serveur à la fois
-- ⚠️ **Pas d'authentification** : Tous les clients ont accès complet
-- ⚠️ **Pas de transactions** : Pas de rollback en cas d'erreur
-- ⚠️ **CORBA legacy** : Technologie dépassée (remplacée par REST, gRPC)
+-  **Pas de persistance** : Données en mémoire (perdues au redémarrage)
+-  **Mono-serveur** : Un seul serveur à la fois
+-  **Pas d'authentification** : Tous les clients ont accès complet
+-  **Pas de transactions** : Pas de rollback en cas d'erreur
+-  **CORBA legacy** : Technologie dépassée (remplacée par REST, gRPC)
 
 ### Améliorations possibles
 
 ```
-🔮 Évolutions futures :
-├── 💾 Base de données (PostgreSQL, MySQL)
-├── 🔐 Authentification (utilisateurs, rôles)
-├── 🔄 Transactions ACID
-├── 📊 Interface graphique (JavaFX, Swing)
-├── 🌐 API REST alternative
-├── 🐳 Containerisation (Docker)
-└── ☁️  Déploiement cloud
+ Évolutions futures :
+├──  Base de données (PostgreSQL, MySQL)
+├──  Authentification (utilisateurs, rôles)
+├──  Transactions ACID
+├──  Interface graphique (JavaFX, Swing)
+├──  API REST alternative
+├──  Containerisation (Docker)
+└──  Déploiement cloud
 ```
 
 ---
 
-## 🤝 Contribution
+##  Contribution
 
 ### Auteur
 
 **Hsan Khecharem**
-- 🎓 LSI3 - Développement d'applications réparties
-- 📧 Email: khecharemhsan@gmail.com
-- 🔗 GitHub: https://github.com/Hsan-Kh
+-  LSI3 - Développement d'applications réparties
+-  Email: khecharemhsan@gmail.com
+-  GitHub: https://github.com/Hsan-Kh
 
 ### Ressources
 
-- 📚 [Documentation CORBA](https://www.omg.org/spec/CORBA/)
-- 📘 [Java IDL Documentation](https://docs.oracle.com/javase/8/docs/technotes/guides/idl/)
-- 📗 [JNDI Tutorial](https://docs.oracle.com/javase/tutorial/jndi/)
+-  [Documentation CORBA](https://www.omg.org/spec/CORBA/)
+-  [Java IDL Documentation](https://docs.oracle.com/javase/8/docs/technotes/guides/idl/)
+-  [JNDI Tutorial](https://docs.oracle.com/javase/tutorial/jndi/)
 
 ### Licence
 
@@ -466,15 +466,15 @@ Projet académique - Tous droits réservés © 2025
 
 ---
 
-## 🎯 Conclusion
+##  Conclusion
 
 Ce projet illustre les fondamentaux des **systèmes distribués** en utilisant CORBA comme middleware de communication. Bien que CORBA soit une technologie des années 1990 aujourd'hui remplacée par des solutions plus modernes (REST, gRPC, microservices), les concepts appris restent **universels** :
 
-- 🔄 **Middleware** : Abstraction de la communication
-- 📦 **Marshalling** : Sérialisation des données
-- 🗂️ **Service Registry** : Découverte de services
-- 🌐 **Transparence** : Appels distants comme appels locaux
-- 🏗️ **Architecture** : Séparation client/serveur
+-  **Middleware** : Abstraction de la communication
+-  **Marshalling** : Sérialisation des données
+-  **Service Registry** : Découverte de services
+-  **Transparence** : Appels distants comme appels locaux
+-  **Architecture** : Séparation client/serveur
 
 Ces principes se retrouvent dans **toutes les architectures distribuées modernes**, faisant de CORBA un excellent outil pédagogique pour comprendre les fondations des systèmes répartis contemporains.
 
@@ -482,8 +482,6 @@ Ces principes se retrouvent dans **toutes les architectures distribuées moderne
 
 <div align="center">
 
-**⭐ Si ce projet vous a été utile, n'hésitez pas à mettre une étoile ! ⭐**
-
-Made with ❤️ and ☕ | LSI3 - 2025
+** Si ce projet vous a été utile, n'hésitez pas à mettre une étoile ! **
 
 </div>
